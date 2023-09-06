@@ -1,16 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 
 const Navbar = () => {
-    const [showPopup, setShowPopup] = useState(false);
-
-    const togglePopup = () => {
-        setShowPopup(!showPopup);
-    };
     return (
         <div>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar navbar-expand-lg" style={{background:'#FECCC1'}}>
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">
                         <img src='https://cdn-icons-png.flaticon.com/128/3068/3068327.png' alt="Bootstrap" width="30" height="24" />
@@ -51,8 +46,7 @@ const Navbar = () => {
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                                 <button className="btn btn-outline-success" type="submit">Search</button>
                         </form> */}
-                        <button className="nav-link" to="/about" onClick={togglePopup}>Login</button>
-                        {showPopup && <Popup closePopup={togglePopup} />}
+                        <Link className="nav-link" to="/login">Login</Link>
                     </div>
                 </div>
             </nav>
@@ -60,47 +54,4 @@ const Navbar = () => {
     )
 }
 
-function Popup({ closePopup }) {
-    const handleLogin = () => {
-        // Logic for handling login
-        alert('Login successful!');
-        closePopup();
-    };
-
-    return (
-        <div className="popup">
-            <div className="popup-inner">
-                {/* <h2>Login</h2>
-        <label htmlFor="username">Username:</label>
-        <input type="text" id="username" />
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" />
-        <button onClick={handleLogin}>Login</button>
-        <button onClick={closePopup}>Close</button> */}
-                <div class="main">
-                    <input type="checkbox" id="chk" aria-hidden="true" />
-
-                    <div class="login">
-                        <form class="form">
-                            <label for="chk" aria-hidden="true">Log in</label>
-                            <input class="input" type="email" name="email" placeholder="Email" required="" />
-                            <input class="input" type="password" name="pswd" placeholder="Password" required="" />
-                            <button>Log in</button>
-                        </form>
-                    </div>
-
-                    <div class="register">
-                        <form class="form">
-                            <label for="chk" aria-hidden="true">Register</label>
-                            <input class="input" type="text" name="txt" placeholder="Username" required="" />
-                            <input class="input" type="email" name="email" placeholder="Email" required="" />
-                            <input class="input" type="password" name="pswd" placeholder="Password" required="" />
-                            <button>Register</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
 export default Navbar
